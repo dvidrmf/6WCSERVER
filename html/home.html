@@ -4,7 +4,155 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Home</title>
-    <link rel="stylesheet" href="css/home.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #e3f2fd 0%, #fff9c4 100%);
+            margin: 0;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            color: #1565c0;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header p {
+            color: #37474f;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .nav-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px 25px;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 4px 15px rgba(21, 101, 192, 0.15);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1565c0, #fbc02d);
+        }
+
+        .nav-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(21, 101, 192, 0.25);
+            border-color: #1565c0;
+        }
+
+        .nav-card h3 {
+            color: #1565c0;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .nav-card p {
+            color: #546e7a;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .nav-button {
+            background: linear-gradient(135deg, #1565c0, #1976d2);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(21, 101, 192, 0.3);
+        }
+
+        .nav-button:hover {
+            background: linear-gradient(135deg, #0d47a1, #1565c0);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(21, 101, 192, 0.4);
+        }
+
+        .admin .nav-button { 
+            background: linear-gradient(135deg, #fbc02d, #f57f17);
+            box-shadow: 0 2px 8px rgba(251, 192, 45, 0.3);
+        }
+
+        .admin .nav-button:hover { 
+            background: linear-gradient(135deg, #f57f17, #e65100);
+            box-shadow: 0 4px 12px rgba(251, 192, 45, 0.4);
+        }
+
+        .student .nav-button { 
+            background: linear-gradient(135deg, #1976d2, #0277bd);
+            box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3);
+        }
+
+        .student .nav-button:hover { 
+            background: linear-gradient(135deg, #0277bd, #01579b);
+            box-shadow: 0 4px 12px rgba(25, 118, 210, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            color: #78909c;
+            font-size: 0.9rem;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .nav-card {
+                padding: 25px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
