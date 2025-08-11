@@ -1,11 +1,14 @@
-// 
-
 // const express = require('express');
 import express from 'express'; // Same thing
+import path from 'path';
+
 const __dirname = import.meta.dirname;
+import bodyParser from 'body-parser';
 
 const app = express();
 app.use(express.static('public'));
+
+const urlEncodeParser = bodyParser.urlencoded({extended:false})
 
 app.get('/', (req, res) =>{
     res.sendFile(__dirname + '/html/home.html')
@@ -47,12 +50,12 @@ app.get('/getStudent', (req, res) => {
     res.end(`Receive Data: ${JSON.stringify(response)}`);
 })
 
-app.get('/getAdmin', (req, res) => {
+app.post('/postAdmin', urlEncodeParser, (req, res) => {
     const response = {
-        adminID: req.query.adminID,
-        firstName: req.query.firstName,
-        lastName: req.query.lastName,
-        department: req.query.department  
+        adminID: req.body.adminID,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        department: req.body.department  
     }
 
     console.log("Response is: ", response);
@@ -60,9 +63,8 @@ app.get('/getAdmin', (req, res) => {
 })
 
 const server = app.listen(5000, () => {
-    const host = server.address().address;
-    const port = server.address().port;
+    
     /* console.log("Server running at http://%s:%s", host, port);
     console.log("Server running at http://" +host+":"+port); */
-    console.log(`Server running at http://${host}:${port}`); // same thing
+    console.log(`Server running at`); // same thing
 })
